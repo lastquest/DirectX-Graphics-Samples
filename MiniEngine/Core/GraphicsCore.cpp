@@ -350,7 +350,13 @@ void Graphics::Initialize(bool RequireDXRSupport)
             D3D12_MESSAGE_ID_COMMAND_LIST_DESCRIPTOR_TABLE_NOT_SET,
 
             // RESOURCE_BARRIER_DUPLICATE_SUBRESOURCE_TRANSITIONS
-            (D3D12_MESSAGE_ID)1008,
+            D3D12_MESSAGE_ID_RESOURCE_BARRIER_DUPLICATE_SUBRESOURCE_TRANSITIONS,
+
+            // Suppress errors from calling ResolveQueryData with timestamps that weren't requested on a given frame.
+            D3D12_MESSAGE_ID_RESOLVE_QUERY_INVALID_QUERY_STATE,
+
+            // Ignoring InitialState D3D12_RESOURCE_STATE_COPY_DEST. Buffers are effectively created in state D3D12_RESOURCE_STATE_COMMON.
+            D3D12_MESSAGE_ID_CREATERESOURCE_STATE_IGNORED,
         };
 
         D3D12_INFO_QUEUE_FILTER NewFilter = {};
